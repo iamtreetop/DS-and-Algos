@@ -21,9 +21,33 @@
 // Given a list of emails, we send one email to each address in the list.  
 // How many different addresses actually receive mails? 
 
+// naive 
+// time: O(N*Emails)
+// space: 
+// N = # of emails 
+// E is avg email length
+
+// loop through emails
+// need set 
+// return set.size
+
 var numUniqueEmails = function(emails) {
-    
+    const uniqueEmails = new Set()
+
+    for (const e of emails) {
+        uniqueEmails.add(destination(e))
+    }
+    return uniqueEmails.size
 };
+
+const destination = (email) => {
+    const dest = [];
+    let isLocal = true;
+
+    for (let i = 0; i < email.length; i++) {
+        const char = email[i];
+    }
+}
 
 
 // Example 1:
