@@ -34,8 +34,8 @@
 var numUniqueEmails = function(emails) {
     const uniqueEmails = new Set()
 
-    for (const e of emails) {
-        uniqueEmails.add(destination(e))
+    for (const i of emails) {
+        uniqueEmails.add(destination(i))
     }
     return uniqueEmails.size
 };
@@ -46,7 +46,23 @@ const destination = (email) => {
 
     for (let i = 0; i < email.length; i++) {
         const char = email[i];
+
+        if (isLocal) {
+            if (char === ".") continue 
+            else if (char === "+") {
+                while(email[i+1] !== '@') 
+                i++
+            } else if (char === '@') {
+                dest.push('@')
+                isLocal = false
+            } else {
+                dest.push(char)
+            }
+        } else {
+            dest.push(char)
+        }
     }
+    return dest.join("")
 }
 
 
