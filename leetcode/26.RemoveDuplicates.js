@@ -10,6 +10,10 @@
 // Note that the input array is passed in by reference, which means a modification
 // to the input array will be known to the caller as well.
 
+// Time: O(n), n length of array. Each of i and j traverses at most n steps.
+
+// Space: O(1).
+
 var removeDuplicates = function(nums) {
     let i = 0;  //pointer 1
     for (let num of nums){ //num is pointer2
