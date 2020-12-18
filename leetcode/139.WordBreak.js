@@ -33,6 +33,14 @@ var wordBreak = function(s, wordDict) {
     return table[table.length -1];
 };
 
+// Strategy: DP; memoization
+// Time:
+// Space:
+
+var wordBreakMemo = function(s, wordDict) {
+
+};
+
 // Example 1:
 
 // Input: s = "leetcode", wordDict = ["leet", "code"]
