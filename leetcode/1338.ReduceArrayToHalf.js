@@ -5,13 +5,12 @@
 // array are removed.
 
 var minSetSize = function(arr) {
-    // initialize counter = 0
     // initialize empty hash
-    // find target length, array length / 2
-    // iterate over array to create hash map
-        // create hash map where integer in i the key and value is #occurence
-    // iterate over values of the hash
-        // subtract values from arr length until arr length <= target length
+    // iterate over array
+        // create hash map where integer is key and value is #occurence
+    // turn hash into array and reverse sort
+    // iterate over values of the reverse sorted arr
+        // count number of removed items until arr length >= target length
         // increment count
     // return count
     let countsHash = {};
