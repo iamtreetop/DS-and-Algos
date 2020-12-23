@@ -1,3 +1,9 @@
+const fs = require('fs').promises;
+
+const readLines = async () => {
+    const data = await fs.readFile('./input', {encoding: 'utf-8'});
+    return data.split('\n');
+};
 // --- Day 1: Report Repair ---
 // After saving Christmas five years in a row, you've decided to take a vacation at 
 // a nice resort on a tropical island. Surely, Christmas will go on without you.
@@ -33,18 +39,11 @@
 // Of course, your expense report is much larger. Find the two entries that sum to 2020; 
 // what do you get if you multiply them together?
 
-const fs = require('fs').promises;
-
-const parseLines = async () => {
-    const data = await fs.readFile('./input', {encoding: 'utf-8'});
-    return data.split('\n');
-};
-
 // Time: O(n)
 // Space: O(n)
 
 const repairReport = async () => {
-    const lines = await parseLines();
+    const lines = await readLines();
     const numbers = lines.map(Number);
     const numberSet = new Set();
 
