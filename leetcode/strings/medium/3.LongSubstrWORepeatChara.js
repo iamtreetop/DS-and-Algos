@@ -10,9 +10,9 @@ var lengthOfLongestSubstring = function (s) {
   // initializ a max counter
   // initialize a seen set
   // if char[p2] is not seen
-  // increment max counter
-  // add p2 to object
-  // if p2-p1 > max ? max = p2-p1 : max = max
+    // increment max counter
+    // add p2 to object
+    // if p2-p1 > max ? max = p2-p1 : max = max
   // else delete char[p2] from seen
   // increment p1
   // return max
