@@ -1,7 +1,6 @@
 function twoNumberSum(array, targetSum) {
   // Brute force
-  // Time: O(n^2)
-  // Space O(n)
+  // O(n^2) Time | O(1) Space
   // let i = 0, j = 0
   // let sumsArr = [];
   // for (let i = 0; i < array.length - 1; i++) {
@@ -14,15 +13,36 @@ function twoNumberSum(array, targetSum) {
   // return sumsArr;
 
   // Hash Table
-  // Time: O(n)
-  // Space: O(n)
-  const numSet = new Set();
-  for (let num of array) {
-    const diff = targetSum - num;
-    if (numSet.has(diff)) {
-        return [diff, num];
-    } else {
-        numSet.add(num);
+  // Time: O(n) Time | O(n) Space
+  // const numSet = new Set();
+  // for (let num of array) {
+  //   const diff = targetSum - num;
+  //   if (numSet.has(diff)) {
+  //     return [diff, num];
+  //   } else {
+  //     numSet.add(num);
+  //   }
+  // }
+  // return [];
+
+  // Two Pointerse
+  // Time: O(nlog(n)) Time | O(1) Space
+
+  // Hash Table
+  // Time: O(n) Time | O(n) Space
+  array.sort((a, b) => a - b);
+  let leftPointer = 0;
+  let rightPointer = array.length - 1;
+
+  while (leftPointer < rightPointer) {
+    const sum = array[leftPointer] + array[rightPointer];
+    
+    if (sum === targetSum) {
+      return [array[leftPointer], array[rightPointer]]
+    } else if (sum < targetSum) {
+      leftPointer++;
+    } else if (sum > targetSum) {
+      rightPointer++;
     }
   }
   return [];
