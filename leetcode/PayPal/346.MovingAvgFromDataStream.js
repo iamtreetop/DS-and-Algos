@@ -10,7 +10,8 @@
 //  * @param {number} size
 //  */
 var MovingAverage = function(size) {
-    
+  this.size = size;
+	this.queue = [];
 };
 
 // /** 
@@ -18,7 +19,15 @@ var MovingAverage = function(size) {
 //  * @return {number}
 //  */
 MovingAverage.prototype.next = function(val) {
-    
+  if (this.queue.length >= this.size) {
+    this.queue.shift();
+  }
+
+  this.queue.push(val);
+
+  return (
+    this.queue.reduce((acc, curr) => acc + curr, 0) / this.queue.length
+  );
 };
 
 // /** 
