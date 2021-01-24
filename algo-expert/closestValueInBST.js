@@ -1,3 +1,6 @@
+// average: O(log(n)) time; O(1) space;
+// worst: O(n) time; O(1) space;
+
 function findClosestValueInBst(tree, target) {
   let closest = Infinity;
   let currNode = tree;
@@ -17,6 +20,24 @@ function findClosestValueInBst(tree, target) {
     }
   }
   return closest;
+}
+function findClosestValueInBstRecur(tree, target) {
+  let closest = Infinity;
+  let currNode = tree;
+
+  if(tree === null) return closest;
+  
+  if (Math.abs(target - currNode.value) < Math.abs(target - closest)) {
+    closest = currNode.value
+  }
+    
+  if (target < currNode.value) {
+    return findClosestValueInBstRecur(currNode.left, target)
+  } else if (target > currNode.value) {
+    return findClosestValueInBstRecur(currNode.right, target);
+  } else {
+    return closest;
+  }
 }
 
 class BST {
