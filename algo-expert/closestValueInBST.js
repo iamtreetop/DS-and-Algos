@@ -1,5 +1,22 @@
 function findClosestValueInBst(tree, target) {
-  
+  let closest = Infinity;
+  let currNode = tree;
+
+  while (currNode) {
+    
+    if (Math.abs(target - currNode.value) < Math.abs(target - closest)) {
+      closest = currNode.value
+    }
+    
+    if (target < currNode.value) {
+      currNode = currNode.left
+    } else if (target > currNode.value) {
+      currNode = currNode.right;
+    } else {
+      break;
+    }
+  }
+  return closest;
 }
 
 class BST {
