@@ -1,3 +1,4 @@
+// O(n time | O(n) space - where n is total number of elements is array
 function spiralTraverse(array) {
   // declare empty resArr
 	const resArr = [];
