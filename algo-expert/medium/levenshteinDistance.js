@@ -1,3 +1,5 @@
+
+// O(nm) time | O(nm) space - n is str1 length, m is str2 length
 function levenshteinDistance(str1, str2) {
   const edits = [];
   for (let i = 0; i < str2.length + 1; i++) {
