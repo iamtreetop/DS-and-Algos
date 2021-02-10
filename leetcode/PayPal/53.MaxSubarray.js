@@ -2,7 +2,22 @@
 // least one number) which has the largest sum and return its sum.
 
 var maxSubArray = function (nums) {
+  // DP
+  // store 2 variables; running max and curr max
+  // walk over nums array
+    // set running max to either current num or running max
+    // set curr max to either curr max or running max
+  // return curr max
+  let runningMax = nums[0];
+  let currMax = nums[0];
   
+  for (let i = 1; i < nums.length; i++) {
+    const num = nums[i];
+    runningMax = Math.max(num, num + runningMax);
+    currMax = Math.max(runningMax, currMax);
+  }
+  
+  return currMax;
 };
 
 // Example 1:
