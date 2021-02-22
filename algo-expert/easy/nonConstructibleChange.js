@@ -1,3 +1,4 @@
+// O(nlogn) time | O(1) space - where n is the number of coins
 function nonConstructibleChange(coins) {
   // sort the input array in place
 	// walk through array
