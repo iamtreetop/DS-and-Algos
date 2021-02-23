@@ -35,3 +35,25 @@ function backtrackAncestralTree(lowerDescendant, highDescendant, diff) {
 	}
 	return lowerDescendant;
 }
+
+function getUniqueNums(array) {
+  let set = new Set()
+  for (const num of array) {
+    set.add(num)
+  }
+  return set.size
+}
+
+// str = 'aabbccddef'
+// array = [90,90,9,9,9,0,1,3,3,1]
+// // console.log(getUniqueNums(str));
+
+// // console.log(getStringCount(str));
+
+this.item = "1";
+setTimeout(function() {
+  this.item = "2";
+  console.log(this.item);
+}, 0);
+
+console.log(this.item)
