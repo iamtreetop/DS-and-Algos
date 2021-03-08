@@ -2,6 +2,8 @@
 
 // If no integer occurs once, return -1.
 
+
+
 // Time: O(n) | Space: O(n)
 var largestUniqueNumber = function(A) {
   // keep track of largestUniqueNum
@@ -23,13 +25,15 @@ var largestUniqueNumber = function(A) {
   
   // console.log(countHash)
   
-  for (const key in countHash) {
-    if (countHash[key] === 1 && Number(key) > Number(maxNum)) {
-      maxNum = key
-    } 
-  }
-  
-  return maxNum;
+  // for (const key in countHash) {
+  //   if (countHash[key] === 1 && Number(key) > Number(maxNum)) {
+  //     maxNum = key
+  //   } 
+  // }
+  // return maxNum;
+  const uniques = Object.keys(countHash).filter(key => countHash[key] === 1)
+  // console.log(uniques)
+  return uniques.pop() || -1
 };
 
 // Example 1:
