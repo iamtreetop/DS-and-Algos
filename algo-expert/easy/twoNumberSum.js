@@ -25,11 +25,8 @@ function twoNumberSum(array, targetSum) {
   // }
   // return [];
 
-  // Two Pointerse
+  // Two Pointers
   // Time: O(nlog(n)) Time | O(1) Space
-
-  // Hash Table
-  // Time: O(n) Time | O(n) Space
   array.sort((a, b) => a - b);
   let leftPointer = 0;
   let rightPointer = array.length - 1;
