@@ -1,0 +1,1 @@
+// Given an array nums of integers and integer k, re``a pair sum less that 15.
