@@ -3,7 +3,17 @@
 
 // If there're duplicates in arr, count them seperately.
 
-
+var countElements = function(arr) {
+  const seen = new Set(arr);
+  // console.log(seen)
+  let count = 0;
+  for (const num of arr) {
+    if (seen.has(num + 1)) {
+      count += 1;
+    }
+  }
+  return count;
+};
 
 // Example 1:
 // Input: arr = [1,2,3]
