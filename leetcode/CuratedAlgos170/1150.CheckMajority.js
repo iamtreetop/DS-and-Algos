@@ -4,7 +4,27 @@
 // A majority element is an element that appears more than N/2 times in 
 // an array of length N.
 
- 
+ var isMajorityElement = function(nums, target) {
+  const countCache = new Map();
+  let max;
+
+  for (const num of nums) {
+    if (countCache.has(num)) {
+      let count = countCache.get(num);
+      countCache.set(num, ++count);
+    } else {
+      countCache.set(num, 1)
+    }
+  }
+  
+
+  for (const [key, value] of countCache) {
+    if (value > nums.length /2) {
+      max = key;
+    }
+  }
+  return max === target;
+};
 
 // Example 1:
 // Input: nums = [2,4,5,5,5,5,5,6,6], target = 5
