@@ -1,3 +1,5 @@
+// time O(n)
+// space O(n)
 var stringShift = function(s, shift) {
   let chars = s.split('');
   for(let i = 0; i < shift.length; i++) {
