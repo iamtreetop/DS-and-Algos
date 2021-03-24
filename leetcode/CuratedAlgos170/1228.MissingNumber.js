@@ -6,6 +6,8 @@
 
 // Return the removed value.
 
+// time: O(n) 
+// space: O(1)
 var missingNumber = function(arr) {
   let idx = 0, largestSub = 0, commonSub = 0, res = -1
   for(let i=1; i<arr.length;i++){
