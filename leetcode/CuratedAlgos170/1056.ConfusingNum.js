@@ -8,12 +8,44 @@
 // 180 degrees becomes a different number with each digit valid.
 
 var confusingNumber = function (N) {
+  // brute force
   // 0,1,6,8,9 -> 0,1,9,8,6
   // 2,3,4,5,7 -> invalid
   // 1. Separate the digits
   // 2. Find rotated digit (look up dictionary, if not found - invalid)
   // 3. Reverse order
   // 4. Check if new number is different
+  const confusingNums = {
+    0: 0,
+    1: 1,
+    2: 'invalid',
+    3: 'invalid',
+    4: 'invalid',
+    5: 'invalid',
+    6: 9,
+    7: 'invalid',
+    8: 8,
+    9: 6
+  };
+
+  let digits = N.toString().split("").reverse();
+
+  digits.forEach((digit, index) => {
+    if (confusingNums[digit]) {
+      digits[index] = confusingNums[digit];
+    }
+  });
+
+  if (!digits.includes("invalid")) {
+    digits = digits.join("");
+    if (digits != N) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
 };
 
 // Example 1:
