@@ -7,7 +7,14 @@
 // they become invalid. A confusing number is a number that when rotated 
 // 180 degrees becomes a different number with each digit valid.
 
- 
+var confusingNumber = function (N) {
+  // 0,1,6,8,9 -> 0,1,9,8,6
+  // 2,3,4,5,7 -> invalid
+  // 1. Separate the digits
+  // 2. Find rotated digit (look up dictionary, if not found - invalid)
+  // 3. Reverse order
+  // 4. Check if new number is different
+};
 
 // Example 1:
 // Input: 6
