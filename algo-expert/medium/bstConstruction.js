@@ -5,6 +5,8 @@ class BST {
     this.right = null;
   }
 
+  // Avg: O(log(n)) time | O(1) space
+  // worst: O(n) time | O(1) space
   insert(value) {
     let currNode = this;
 		while (true) {
@@ -27,6 +29,8 @@ class BST {
     return this;
   }
 
+  // Avg: O(log(n)) time | O(1) space
+  // worst: O(n) time | O(1) space
   contains(value) {
     let currNode = this;
 		while (currNode !== null) {
@@ -40,7 +44,8 @@ class BST {
 		}
 		return false
   }
-
+  // Avg: O(log(n)) time | O(1) space
+  // worst: O(n) time | O(1) space
   remove(value, parentNode = null) {
     let currNode = this;
 		while (currNode !== null) {
