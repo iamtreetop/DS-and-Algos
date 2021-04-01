@@ -31,6 +31,14 @@ function postOrderTraverse(tree, array) {
 	return array
 }
 
+// tree =   10
+//         /  \
+//        5    15
+//       / \    \
+//      2   5    22
+//     /
+//    1
+
 // "nodes": [
 //   {"id": "10", "left": "5", "right": "15", "value": 10},
 //   {"id": "15", "left": null, "right": "22", "value": 15},
