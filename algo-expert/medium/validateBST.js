@@ -7,5 +7,12 @@ class BST {
 }
 
 function validateBst(tree) {
-  // Write your code here.
-}
+  return validateBstHelper(tree, -Infinity, Infinity);
+};
+
+function validateBstHelper(tree, minVal, maxVal) {
+  if (tree === null) return true;
+  if (tree.value < minVal || tree.value >= maxValue) return false;
+  const leftIsValid = validateBstHelper(tree.left, minVal, tree.value);
+  return leftIsValid && validateBstHelper(tree.right, tree.value, maxVal);
+};
