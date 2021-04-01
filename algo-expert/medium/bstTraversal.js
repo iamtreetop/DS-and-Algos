@@ -52,6 +52,6 @@ function postOrderTraverse(tree, array) {
 
 // {
 //   "inOrderArray": [1, 2, 5, 5, 10, 15, 22],
-//   "postOrderArray": [1, 2, 5, 5, 22, 15, 10],
-//   "preOrderArray": [10, 5, 2, 1, 5, 15, 22]
+//   "preOrderArray": [10, 5, 2, 1, 5, 15, 22],
+//   "postOrderArray": [1, 2, 5, 5, 22, 15, 10]
 // }
