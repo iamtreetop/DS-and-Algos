@@ -6,6 +6,7 @@ class BST {
   }
 }
 
+// O(n) time | O(d) space
 function validateBst(tree) {
   return validateBstHelper(tree, -Infinity, Infinity);
 };
