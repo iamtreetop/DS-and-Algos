@@ -1,8 +1,9 @@
-function minHeightBst(array) {
+// O(nlog(n)) time | O(n) space - where n is the length of the array
+function minHeightBstNaive(array) {
 	return constructMinHeightBst(array, null, 0, array.length - 1);
 }
 // sorted and distinct!
-function constructMinHeightBst(array, bst, startIdx, endIdx) {
+function constructMinHeightBstNaive(array, bst, startIdx, endIdx) {
 	// 1. find midpoint (root node)
 	// 2. recursive on left half with midpoint
 	// 3. recursive on right half with midpoint
@@ -14,8 +15,8 @@ function constructMinHeightBst(array, bst, startIdx, endIdx) {
 	} else {
 		bst.insert(valueToAdd);
 	}
-	constructMinHeightBst(array, bst, startIdx, midIdx - 1);
-	constructMinHeightBst(array, bst, midIdx + 1, endIdx);
+	constructMinHeightBstNaive(array, bst, startIdx, midIdx - 1);
+	constructMinHeightBstNaive(array, bst, midIdx + 1, endIdx);
 	return bst;
 }
 
