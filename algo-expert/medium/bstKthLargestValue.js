@@ -6,22 +6,54 @@ class BST {
   }
 }
 
+// O(h + k) space | O(h) time 
+// reverse inOrder traversal
+// 1. keep track of # of nodes visited
+// 2. last value visited
+class TreeInfo { //(0, -1)
+	constructor(numNodesVisited, lastVisitedNodeValue) {
+		this.numNodesVisited = numNodesVisited;
+		this.lastVisitedNodeValue = lastVisitedNodeValue;
+	}
+}
+
 function findKthLargestValueInBst(tree, k) {
-  // 1. initialize an empty array
-  // 2. inOrder traverse the node
-  // 3. return array[array.length - k]
-  const sortedNodes = [];
-  inOrderTraverse(tree, sortedNodes);
-  return sortedNodes[sortedNodes.length - k]
+  const treeInfo = new TreeInfo(0, -1);
+  reverseInOrderTraverse(tree, k, treeInfo);
+  return treeInfo.lastVisitedNodeValue;
 }
 
-function inOrderTraverse(tree, sortedNodes) {
-  if (tree === null) return;
-
-  inOrderTraverse(tree.left, sortedNodes);
-  sortedNodes.push(tree.value);
-  inOrderTraverse(tree.right, sortedNodes);
+function reverseInOrderTraverse(tree, k, treeInfo) {
+	if (tree === null || treeInfo.numNodesVisited >= k) return;
+	
+	reverseInOrderTraverse(tree.right, k, treeInfo);
+	if (treeInfo.numNodesVisited < k) {
+		treeInfo.numNodesVisited++;
+		treeInfo.lastVisitedNodeValue = tree.value;
+		reverseInOrderTraverse(tree.left, k, treeInfo)
+	}
 }
+
+// function findKthLargestValueInBst(tree, k) {
+//  // brute force
+// 	// initialize empty array
+// 	// inorder traversal
+// 	// find kth largest node; length - k
+//   const sortedNodes = [];
+//   inOrderTraverse(tree, sortedNodes);
+//   return sortedNodes[sortedNodes.length - k]
+// }
+
+// // [1,2,3,5,5,15,17,20,22]; length = 9, k = 3
+// // kth largest is index 6 => 9-3
+
+// function inOrderTraverse(tree, sortedNodes) {
+//   if (tree === null) return;
+
+//   inOrderTraverse(tree.left, sortedNodes);
+//   sortedNodes.push(tree.value);
+//   inOrderTraverse(tree.right, sortedNodes);
+// }
 
 // tree =     15
 //          /    \
