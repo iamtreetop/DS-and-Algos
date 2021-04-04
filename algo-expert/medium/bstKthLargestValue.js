@@ -7,8 +7,20 @@ class BST {
 }
 
 function findKthLargestValueInBst(tree, k) {
-  // Write your code here.
-  return -1;
+  // 1. initialize an empty array
+  // 2. inOrder traverse the node
+  // 3. return array[array.length - k]
+  const sortedNodes = [];
+  inOrderTraverse(tree, sortedNodes);
+  return sortedNodes[sortedNodes.length - k]
+}
+
+function inOrderTraverse(tree, sortedNodes) {
+  if (tree === null) return;
+
+  inOrderTraverse(tree.left, sortedNodes);
+  sortedNodes.push(tree.value);
+  inOrderTraverse(tree.right, sortedNodes);
 }
 
 // tree =     15
