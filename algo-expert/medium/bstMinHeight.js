@@ -1,3 +1,17 @@
+// O((n)) time | O(n) space - where n is the length of the array
+function minHeightOptimized(array) {
+	return constructMinHeightBst(array, 0, array.length - 1);
+}
+
+function constructMinHeightOptimized(array, startIdx, endIdx) {
+	if (endIdx < startIdx) return null;
+	const midIdx = Math.floor((startIdx + endIdx) / 2);
+	const bst = new BST(array[midIdx]);
+	bst.left = constructMinHeightOptimized(array, startIdx, midIdx - 1);
+	bst.right = constructMinHeightOptimized(array, midIdx + 1, endIdx);
+	return bst;
+}
+
 // O(nlog(n)) time | O(n) space - where n is the length of the array
 function minHeightBstNaive(array) {
 	return constructMinHeightBst(array, null, 0, array.length - 1);
