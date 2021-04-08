@@ -8,8 +8,21 @@
 // Return the number of teams you can form given the conditions. 
 // (soldiers can be part of multiple teams).
 
+// brute force
+// O(n^3) time | O(1)
 var numTeams = function (rating) {
+  let count = 0
   
+  for (let i = 0; i < rating.length; i++) {
+    for (let j = i + 1; j < rating.length; j++) {
+      for (let k = j + 1; k < rating.length; k++) {
+        if ((rating[i] < rating[j] && rating[j] < rating[k]) || 
+        (rating[i] > rating[j] && rating[j] > rating[k])) 
+        count++;
+      }
+    }
+  }
+  return count;
 };
 
 // Example 1:
