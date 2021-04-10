@@ -1,7 +1,7 @@
 // Given the root node of a binary search tree, return the 
 // sum of values of all nodes with a value in the range [low, high].
 
-// O(n) time | O(n) space
+// O(n) time | O(n) space - where n is number of nodes
 var rangeSumBST = function (root, low, high) {
   // 1. Store a sum variable
   // 2. traverse through tree using DFS (stack)
