@@ -5,7 +5,69 @@
 // Given the root of a binary tree, return an array containing the 
 // values of all lonely nodes in the tree. Return the list in any order.
 
-var getLonelyNodes = function (root) {};
+// O(n) time | O(n) space - where n is number of nodes
+var getLonelyNodes = function (root) {
+  // traverse root, DFS
+  // at each node, check if there are 2 children
+    // if node.left && node.right === null, push left to res
+    // if node.right && node.left === null, push right to res
+    // push each child into stack
+  let res = []
+  let stack = [root]
+  
+  // while (stack.length) {
+  //   let currNode = stack.pop();
+    
+  //   if (currNode.left && !currNode.right) {
+  //     res.push(currNode.left.val)
+  //   }
+    
+  //   if (currNode.right && !currNode.left) {
+  //     res.push(currNode.right.val);
+  //   }
+    
+  //   if (currNode.left) {
+  //     stack.push(currNode.left)
+  //   }
+    
+  //   if (currNode.right) {
+  //     stack.push(currNode.right)
+  //   }
+  // }
+
+  while (stack.length) {
+    let currNode = stack.pop();
+    
+    if (currNode.left) {
+      stack.push(currNode.left);
+      if (!currNode.right) {
+        res.push(currNode.left.val)
+      }
+    }
+    
+    if (currNode.right) {
+      stack.push(currNode.right);
+      if (!currNode.left) {
+        res.push(currNode.right.val)
+      }
+    }
+  }
+  
+  return res;
+};
+
+const getLonelyNodes = (root) => {
+  let lonely = []
+  const dfs = root => {
+    if (!root) return
+    if (!root.left && root.right) lonely.push(root.right.val)
+    if (!root.right && root.left) lonely.push(root.left.val)   
+    dfs(root.left)
+    dfs(root.right)
+  }
+  dfs(root)
+  return lonely
+};
 
 // Example 1:
 // Input: root = [1,2,3,null,4]
