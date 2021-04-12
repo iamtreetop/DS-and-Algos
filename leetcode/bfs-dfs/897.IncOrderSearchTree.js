@@ -2,7 +2,26 @@
 // in-order so that the leftmost node in the tree is now the root 
 // of the tree, and every node has no left child and only one right child.
 
+var increasingBST = function(root) {
+  let res = [];
 
+  inOrderTraversal(root, res);
+
+  let newTree = new TreeNode(0);
+  let currNode = newTree;
+  for (let i = 0; i < res.length; i++) {
+    currNode.right = new TreeNode(res[i]);
+    currNode = currNode.right;
+  }
+  return newTree.right;
+};
+
+const inOrderTraversal = (node, arr) => {
+  if (node === null) return node;
+  inOrderTraversal(node.left, arr);
+  arr.push(node.val);
+  inOrderTraversal(node.right, arr);
+}
 
 // Example 1:
 // Input: root = [5,3,6,2,4,null,8,1,null,null,null,7,9]
