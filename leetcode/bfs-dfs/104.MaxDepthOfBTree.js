@@ -27,6 +27,12 @@ var maxDepth = function(root) {
   return depth;
 };
 
+var maxDepthRecursive = function(root) {
+  if(!root) return null;
+  let max = Math.max(maxDepth(root.left), maxDepth(root.right));
+  return max + 1;
+};
+
 // Example 1:
 // Input: root = [3,9,20,null,null,15,7]
 // Output: 3
