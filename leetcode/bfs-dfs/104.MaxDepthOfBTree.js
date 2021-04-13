@@ -3,7 +3,29 @@
 // A binary tree's maximum depth is the number of nodes along 
 // the longest path from the root node down to the farthest leaf node.
 
- 
+var maxDepth = function(root) {
+  if (!root) return 0;
+  
+  let queue = [];
+  let depth = 0;
+
+  queue.push(root);
+  
+  while (queue.length) {
+    let rowSize = queue.length;
+
+    for (let i = 0; i < rowSize; i++) {
+      let currNode = queue.shift();
+
+      if (currNode.left)queue.push(currNode.left);
+      if (currNode.right) queue.push(currNode.right);
+    }
+    
+    depth++;
+  }
+  
+  return depth;
+};
 
 // Example 1:
 // Input: root = [3,9,20,null,null,15,7]
