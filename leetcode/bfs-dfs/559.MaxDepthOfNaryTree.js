@@ -11,20 +11,19 @@ var maxDepth = function (root) {
   // 2. push each node into a queue
   // 3. iterate over each child, and push child into the queue
     // increment count
-
   if (!root) return 0;
   
   let queue = [];
   let depth = 0;
-  
+
   queue.push(root);
   
   while (queue.length) {
-    let queueSize = queue.length;
-  
-    for (let i = 0; i < queueSize; i++) {
+    let rowSize = queue.length;
+
+    for (let i = 0; i < rowSize; i++) {
       let currNode = queue.shift();
-      
+
       for (let child of currNode.children) {
         queue.push(child);
       }
