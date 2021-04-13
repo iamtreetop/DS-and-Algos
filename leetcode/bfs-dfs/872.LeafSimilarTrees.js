@@ -10,7 +10,25 @@
 // Return true if and only if the two given trees with head nodes root1 
 // and root2 are leaf-similar.
 
- 
+var leafSimilar = function(root1, root2) {
+  // 1. Get each root's leaf nodes using DFS
+  // 2. join each res array and check if they're equal
+  let res1 = [];
+  let res2 = [];
+  getLeafNodes(root1, res1);
+  getLeafNodes(root2, res2);
+  return res1.join("") === res2.join("");
+};
+
+const getLeafNodes = (node, array) => {
+  if (!node) return;
+  
+  if (!node.left && !node.right) {
+    array.push(node.val)
+  }
+  getLeafNodes(node.left, array);
+  getLeafNodes(node.right, array);
+}
 
 // Example 1:
 // Input: root1 = [3,5,1,6,2,9,8,null,null,7,4], root2 = [3,5,1,6,7,4,2,null,null,null,null,null,null,9,8]
