@@ -20,7 +20,20 @@ var leafSimilar = function(root1, root2) {
   return res1.join("") === res2.join("");
 };
 
-const getLeafNodes = (node, array) => {
+const getLeafNodesIter = (node, array) => {
+  let stack = [node];
+  
+  while (stack.length) {
+    let currNode = stack.pop();
+    if (!currNode.left && !currNode.right) {
+      array.push(currNode.val)
+    }
+    if (currNode.left) stack.push(currNode.left);
+    if (currNode.right) stack.push(currNode.right)
+  }
+}
+
+const getLeafNodesRecursive = (node, array) => {
   if (!node) return;
   
   if (!node.left && !node.right) {
