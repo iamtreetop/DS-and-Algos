@@ -4,7 +4,19 @@
 // A height-balanced binary tree is a binary tree in which the depth of the two 
 // subtrees of every node never differs by more than one.
 
- 
+var sortedArrayToBST = function(nums) {
+  // 1. find midpoint of input array
+  // 2. midpoint becomes the root
+  // 3. recursively call on root.left and root.right
+  
+  if (!nums.length) return null;
+  
+  let midPoint = Math.floor(nums.length/2);
+  let root = new TreeNode(nums[midPoint]);
+  root.left = sortedArrayToBST(nums.slice(0, midPoint));
+  root.right = sortedArrayToBST(nums.slice(midPoint + 1));
+  return root;
+};
 
 // Example 1:
 // Input: nums = [-10,-3,0,5,9]
