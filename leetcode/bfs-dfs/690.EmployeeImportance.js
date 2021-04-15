@@ -13,6 +13,8 @@
 // need to return the total importance value of this employee and all their 
 // subordinates.
 
+
+// O(n) time | O(n) space - where n is the size of employees
 var GetImportance = function (employees, id) {
   // 1. create map of employees
     // id => {imp, subs}
