@@ -14,7 +14,35 @@
 // subordinates.
 
 var GetImportance = function (employees, id) {
+  // 1. create map of employees
+    // id => {imp, subs}
+  // 2. bfs with id
+  // 3. add id.importance to total
+  // 4. push subs
   
+  let employeeMap = new Map();
+  
+  for (const employee of employees) {
+    employeeMap.set(employee.id, {
+      importance: employee.importance,
+      subs: employee.subordinates
+    })
+  }
+  
+  // console.log(employeeMap)
+  
+  let total = 0;
+  let stack = [id];
+  
+  while (stack.length) {
+    // console.log(stack)
+    const currEmployee = employeeMap.get(stack.pop());
+    // console.log(currEmployee.importance)
+    total += currEmployee.importance;
+    // console.log(currEmployee.subs)
+    stack.push(...currEmployee.subs)
+  }
+  return total;
 };
 
 // Example 1:
