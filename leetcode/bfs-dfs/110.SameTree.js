@@ -18,6 +18,38 @@ var isSameTree = function (p, q) {
   return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
 };
 
+// Iterative
+// Time O(n) | Space O(n)
+var isSameTree = function (p, q) {
+  const qStack = [];
+  const pStack = [];
+
+  while (p || q || pStack.length || qStack.length) {
+    while (p) {
+      pStack.push(p);
+      p = p.left;
+    }
+    while (q) {
+      qStack.push(q);
+      q = q.left;
+    }
+
+    p = pStack.pop(); 
+    q = qStack.pop();
+
+    if (!p && !q) continue;
+
+    if (!p || !q || p.val !== q.val) return false;
+
+    pStack.push(null);
+    qStack.push(null);
+
+    p = p.right;
+    q = q.right;
+  }
+  return true;
+};
+
 // Example 1:
 // Input: p = [1,2,3], q = [1,2,3]
 // Output: true
