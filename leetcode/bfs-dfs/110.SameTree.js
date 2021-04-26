@@ -4,7 +4,19 @@
 // Two binary trees are considered the same if they are structurally identical, 
 // and the nodes have the same value.
 
- 
+// Recursive
+// Time O(n) | Space O(1), height of tree
+var isSameTree = function (p, q) {
+  if (!p && !q) {
+    return true;
+  }
+
+  if((!p || !q) ||(p.val !== q.val)) {
+    return false;
+  }
+
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+};
 
 // Example 1:
 // Input: p = [1,2,3], q = [1,2,3]
