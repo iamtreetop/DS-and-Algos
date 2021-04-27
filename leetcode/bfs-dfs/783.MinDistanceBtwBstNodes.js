@@ -1,7 +1,30 @@
 // Given the root of a Binary Search Tree (BST), return the minimum difference 
 // between the values of any two different nodes in the tree.
 
- 
+const minDiffInBST = (root) => {
+  const stack = [];
+  let curr = root,
+    prev = null,
+    min = Infinity;
+
+  while (stack.length || curr) {
+    if (curr) {
+      stack.push(curr);
+      curr = curr.left;
+    } else {
+      curr = stack.pop();
+
+      if (prev) {
+        min = Math.min(min, Math.abs(curr.val - prev.val));
+      }
+      prev = curr;
+
+      curr = curr.right;
+    }
+  }
+
+  return min;
+};
 
 // Example 1:
 // Input: root = [4,2,6,1,3]
