@@ -2,8 +2,16 @@
 // any order.
 // A leaf is a node with no children.
 
-var binaryTreePaths = function(root) {
-    
+var binaryTreePathsRecur = function(root) {
+    if(!root) return [];
+    var result = [];
+    function path(root, str){
+        if(!root.left && !root.right) result.push(str + root.val);
+        if(root.left) path(root.left, str + root.val + "->");
+        if(root.right) path(root.right, str + root.val + "->");
+    }
+    path(root, "");
+    return result;
 };
 
 // Example 1:
