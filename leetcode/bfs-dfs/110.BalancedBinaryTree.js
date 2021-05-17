@@ -5,7 +5,19 @@
 // a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
 
 var isBalanced = function (root) {
-  
+  return getHeight(root) !== -1;
+
+  function getHeight(root) {
+    if (!root) {
+      return 0;
+    }
+    let left = getHeight(root.left);
+    let right = getHeight(root.right);
+    if (left == -1 || right == -1 || Math.abs(left - right) > 1) {
+      return -1;
+    }
+    return 1 + Math.max(left, right);
+  }
 };
 
 // Example 1:
