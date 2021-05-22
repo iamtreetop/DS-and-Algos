@@ -10,7 +10,28 @@
 
 // Note: The merging process must start from the root nodes of both trees.
 
-var mergeTrees = function (root1, root2) {};
+// traverse through tree in preorder => self, left, right
+// check if both tree nodes are null
+  // if not, add values together
+// recur left
+// recurd right
+// return root of new tree
+
+var mergeTreesRecursive = function (root1, root2) {
+  if (!root1) {
+    return root2;
+  };
+  if (!root2) {
+    return root1;
+  };
+
+  root1.val += root2.val
+
+  root1.left = mergeTreesRecursive(root1.left, root2.left);
+  root1.right = mergeTreesRecursive(root1.right, root2.right);
+
+  return root1;
+};
 
 // Example 1:
 // Input: root1 = [1,3,2,5], root2 = [2,1,3,null,4,null,7]
