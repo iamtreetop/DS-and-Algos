@@ -13,8 +13,8 @@
 // traverse through tree in preorder => self, left, right
 // check if both tree nodes are null
   // if not, add values together
-// recur left
-// recurd right
+// recurse left
+// recurse right
 // return root of new tree
 
 var mergeTreesRecursive = function (root1, root2) {
@@ -29,6 +29,46 @@ var mergeTreesRecursive = function (root1, root2) {
 
   root1.left = mergeTreesRecursive(root1.left, root2.left);
   root1.right = mergeTreesRecursive(root1.right, root2.right);
+
+  return root1;
+};
+
+// Use DFS
+// push tuple of root node of both trees to stack
+  // for node pair removed, add the values corresponding to the two nodes and update the value of the corresponding node in the first tree
+  // if the left child of the first tree exists, push the left child(pair) of both the trees onto the stack.
+  // else, append the left child of the second tree to the current node of the first tree
+  // do same for right child
+  // if both the current nodes are NULL, continue with popping the next nodes from the stack.
+// return root
+var mergeTreesIter = function (root1, root2) {
+  if (root1 === null) {
+    return root2
+  };
+
+  const stack = [];
+  stack.push([root1, root2]);
+
+  while (stack.length) {
+    const tuple = stack.pop();
+    if (!tuple[0] || !tuple[1]) {
+      continue;
+    }
+
+    tuple[0].val += tuple[1].val;
+
+    if (!tuple[0].left) {
+      tuple[0].left = tuple[1].left;
+    } else {
+      stack.push([tuple[0].left, tuple[1].left]);
+    }
+
+    if (!tuple[0].right) {
+      tuple[0].right = tuple[1].right;
+    } else {
+      stack.push([tuple[0].right, tuple[1].right]);
+    }
+  }
 
   return root1;
 };
