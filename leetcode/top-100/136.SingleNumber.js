@@ -2,7 +2,21 @@
 
 // You must implement a solution with a linear runtime complexity and use only constant extra space.
 
-var singleNumber = function (nums) {};
+var singleNumber = function (nums) {
+  const hash = {};
+
+  for (let num of nums) {
+    if (!hash[num]) {
+      hash[num] = 1;
+    } else {
+      hash[num]++;
+    }
+  }
+
+  for (let num in hash) {
+    if (hash[num] === 1) return num;
+  }
+};
 
 // Example 1:
 
@@ -16,10 +30,8 @@ var singleNumber = function (nums) {};
 
 // Input: nums = [1]
 // Output: 1
- 
 
 // Constraints:
-
 // 1 <= nums.length <= 3 * 104
 // -3 * 104 <= nums[i] <= 3 * 104
 // Each element in the array appears twice except for one element which appears only once.
