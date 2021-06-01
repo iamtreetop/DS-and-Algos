@@ -18,6 +18,14 @@ var singleNumber = function (nums) {
   }
 };
 
+var singleNumberV2 = function (nums) {
+  let hash = {};
+  for (let num of nums) {
+    hash[num] ? delete hash[num] : (hash[num] = 1);
+  }
+  return Object.keys(hash)[0];
+};
+
 // Example 1:
 
 // Input: nums = [2,2,1]
