@@ -7,6 +7,8 @@
 // iterate of keys of hash
   // if value is 1, sum + value
 
+// O(n) time | O(n) space
+
 var sumOfUnique = function (nums) {
   const hash = {};
   let sum = 0;
@@ -18,11 +20,16 @@ var sumOfUnique = function (nums) {
     }
   }
 
-  for (const key in hash) {
-    if (hash[key] === 1) {
-      sum += Number(key);
-    }
-  }
+  // for (const key in hash) {
+  //   if (hash[key] === 1) {
+  //     sum += Number(key);
+  //   }
+  // }
+  Object.keys(hash)
+    .filter((key) => hash[key] === 1)
+    // .map((num) => (sum += parseInt(num)));
+    .map((num) => (sum += +num));
+
 
   return sum;
 };
