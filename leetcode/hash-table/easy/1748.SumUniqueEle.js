@@ -7,8 +7,6 @@
 // iterate of keys of hash
   // if value is 1, sum + value
 
-// O(n) time | O(n) space
-
 var sumOfUnique = function (nums) {
   const hash = {};
   let sum = 0;
