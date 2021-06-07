@@ -8,9 +8,9 @@
 // the third row consists of the characters "zxcvbnm".
 
 var findWords = function (words) {
-  const row1 = "qwertyuiop";
-  const row2 = "asdfghjkl";
-  const row3 = "zxcvbnm";
+  const row1 = new Set("qwertyuiop");
+  const row2 = new Set("asdfghjkl");
+  const row3 = new Set("zxcvbnm");
 
   const res = [];
 
@@ -26,7 +26,7 @@ var findWords = function (words) {
 
 const isValid = (word, row) => {
   for (const char of word) {
-    if (!row.includes(char.toLowerCase())) {
+    if (!row.has(char.toLowerCase())) {
       return false;
     }
   }
