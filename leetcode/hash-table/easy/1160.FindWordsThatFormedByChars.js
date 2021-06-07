@@ -5,7 +5,30 @@
 
 // Return the sum of lengths of all good strings in words.
 
- 
+var countCharacters = function (words, chars) {
+  let count = 0;
+
+  for (const word of words) {
+    if (isValid(word, chars)) {
+      count += word.length;
+    } else {
+      continue;
+    }
+  }
+
+  return count;
+};
+
+const isValid = (word, chars) => {
+  for (const letter of word) {
+    if (!chars.includes(letter)) {
+      return false;
+    } else {
+      chars = chars.replace(letter, "");
+    }
+  }
+  return true;
+};
 
 // Example 1:
 
