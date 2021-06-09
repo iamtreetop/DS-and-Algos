@@ -9,7 +9,18 @@
 // types of candies she can eat if she only eats n / 2 of them.
 
 var distributeCandies = function (candyType) {
-  
+  return Math.min(new Set(candyType).size, candyType.length / 2);
+};
+
+var distributeCandies2 = function (candyType) {
+  const half = candyType.length / 2;
+  const set = new Set();
+
+  for (const candy of candyType) {
+    set.add(candy);
+    if (set.size >= half) return half;
+  }
+  return set.size;
 };
 
 // Example 1:
