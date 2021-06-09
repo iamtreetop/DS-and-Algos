@@ -21,6 +21,15 @@ var findTheDifference = function (s, t) {
   }
 };
 
+var findTheDifference2 = function (s, t) {
+  const sChars = s.split("").sort();
+  const tChars = t.split("").sort();
+
+  for (let i = 0; i < tChars.length; i++) {
+    if (sChars[i] !== tChars[i]) return tChars[i];
+  }
+};
+
 // Example 1:
 // Input: s = "abcd", t = "abcde"
 // Output: "e"
