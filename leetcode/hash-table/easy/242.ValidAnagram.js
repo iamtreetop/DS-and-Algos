@@ -9,12 +9,16 @@ var isAnagram = function (s, t) {
     hash[char] = (hash[char] || 0) + 1;
   }
 
-  for (const char of t) {
-    hash[char] = (hash[char] || 0) - 1;
-  }
+  // for (const char of t) {
+  //   hash[char] = (hash[char] || 0) - 1;
+  // }
 
-  for (const [key, val] of Object.entries(hash)) {
-    if (val !== 0) return false;
+  // for (const [key, val] of Object.entries(hash)) {
+  //   if (val !== 0) return false;
+  // }
+  for (const char of t) {
+    if (!hash[char]) return false;
+    hash[char]--;
   }
 
   return true;
