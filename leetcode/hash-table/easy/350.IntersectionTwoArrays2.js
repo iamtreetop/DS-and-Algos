@@ -21,6 +21,25 @@ var intersect = function (nums1, nums2) {
   return res;
 };
 
+var intersect = function (nums1, nums2) {
+  let arr1 = nums1.sort((a, b) => a - b);
+  let arr2 = nums2.sort((a, b) => a - b);
+  let res = [];
+
+  while (arr1.length && arr2.length) {
+    if (arr1[0] === arr2[0]) {
+      res.push(arr1.shift());
+      arr2.shift();
+    } else if (arr1[0] < arr2[0]) {
+      arr1.shift();
+    } else {
+      arr2.shift();
+    }
+  }
+
+  return res;
+};
+
 // Example 1:
 // Input: nums1 = [1,2,2,1], nums2 = [2,2]
 // Output: [2,2]
