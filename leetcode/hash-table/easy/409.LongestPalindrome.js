@@ -15,6 +15,22 @@ var longestPalindrome = function (s) {
   return s.length > maxLength ? maxLength + 1 : maxLength;
 };
 
+var longestPalindrome2 = function (s) {
+  const set = new Set();
+  let max = 0;
+
+  for (const char of s) {
+    if (!set.has(char)) {
+      set.add(char);
+      continue;
+    }
+
+    set.delete(char);
+    max += 2;
+  }
+  return set.size > 0 ? max + 1 : max;
+};
+
 // Example 1:
 // Input: s = "abccccdd"
 // Output: 7
