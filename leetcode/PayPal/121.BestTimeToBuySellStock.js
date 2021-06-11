@@ -26,6 +26,23 @@ var maxProfit = function(prices) {
     return greatestProfit;
 };
 
+// One Pass 
+// Time O(n) | Space O(1)
+
+var maxProfit2 = function (prices) {
+  let max = 0;
+  let min = prices[0];
+
+  for (const price of prices) {
+    if (price < min) {
+      min = price;
+    } else if (price - min > max) {
+      max = price - min;
+    }
+  }
+
+  return max;
+};
 
 // Example 1:
 
