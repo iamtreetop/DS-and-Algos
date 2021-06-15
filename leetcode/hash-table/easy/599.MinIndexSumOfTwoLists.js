@@ -5,7 +5,41 @@
 // sum. If there is a choice tie between answers, output all of them with no order 
 // requirement. You could assume there always exists an answer.
 
- 
+// Time: O(nm); Space: O(n)
+// initialize empty hash, result array, and minimum variable
+// create hash for list 1 where {name: idx}
+// iterate over list2
+  // if current restaurnt is in the hash
+  // store sum as hash[name] + current index
+    // if sum < min, reset result array, push restuarant, reset min to sum
+    // if sum == min, push restaurant
+
+var findRestaurant = function (list1, list2) {
+  const hash = {};
+  let common = [];
+  let min = Infinity;
+
+  for (let i = 0; i < list1.length; i++) {
+    let restaurant = list1[i];
+    hash[restaurant] = i;
+  }
+
+  for (let i = 0; i < list2.length; i++) {
+    let restaurant = list2[i];
+    let sum = 0;
+    if (hash[restaurant] !== undefined) {
+      sum = hash[restaurant] + i;
+      if (sum < min) {
+        common = [];
+        common.push(restaurant);
+        min = sum;
+      } else if (sum === min) {
+        common.push(restaurant);
+      }
+    }
+  }
+  return common;
+};
 
 // Example 1:
 // Input: list1 = ["Shogun","Tapioca Express","Burger King","KFC"], 
