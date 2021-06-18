@@ -8,7 +8,41 @@
 // Those numbers for which this process ends in 1 are happy.
 // Return true if n is a happy number, and false if not.
 
- 
+var isHappy = function (n) {
+  // loop til total is found or total is 1
+  const seen = {};
+
+  while (n !== 1) {
+    let digits = getDigits(n);
+    n = getSquareTotal(digits);
+
+    if (seen[n]) {
+      return false;
+    } else {
+      seen[n] = true;
+    }
+  }
+
+  return true;
+};
+
+const getDigits = (num) => {
+  // split the current number to get digits
+  let digits = num
+    .toString()
+    .split("")
+    .map((n) => Number(n));
+  return digits;
+};
+
+const getSquareTotal = (digits) => {
+  // square the digits
+  let sum = 0;
+  for (const digit of digits) {
+    sum += digit * digit;
+  }
+  return sum;
+};
 
 // Example 1:
 
