@@ -5,7 +5,29 @@
 
 // You must solve this problem without using the library's sort function.
 
-var sortColors = function (nums) {};
+var sortColors = function (nums) {
+  function swap(i, j) {
+    [nums[i], nums[j]] = [nums[j], nums[i]];
+  }
+
+  let left = 0;
+  let right = nums.length - 1;
+  let i = 0;
+
+  while (i <= right) {
+    const n = nums[i];
+    if (n === 0) {
+      swap(i, left);
+      left++;
+      i++;
+    } else if (n === 2) {
+      swap(i, right);
+      right--;
+    } else {
+      i++;
+    }
+  }
+};
 
 // Example 1:
 // Input: nums = [2,0,2,1,1,0]
