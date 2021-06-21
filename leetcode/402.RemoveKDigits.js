@@ -1,7 +1,25 @@
 // Given a non-negative integer num represented as a string, remove k digits 
 // from the number so that the new number is the smallest possible.
 
-var removeKdigits = function (num, k) {};
+var removeKdigits = function (nums, k) {
+  const stack = [];
+
+  for (const num of nums) {
+    while (k > 0 && stack.length && stack[stack.length - 1] > num) {
+      stack.pop();
+      k--;
+    }
+    stack.push(num);
+  }
+
+  // edge case: "12345", k = 1
+  for (let i = 0; i < k; i++) {
+    stack.pop();
+  }
+
+  while (stack[0] === "0") stack.shift();
+  return stack.length > 0 ? stack.join("") : "0";
+};
 
 // Note:
 // The length of num is less than 10002 and will be ≥ k.
