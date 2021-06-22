@@ -4,7 +4,21 @@
 // If there is more than one possible answer, return the longest word with the smallest lexicographical order. 
 // If there is no answer, return the empty string.
 
-var longestWord = function (words) {};
+var longestWord = function (words) {
+  words.sort();
+  const set = new Set();
+  let longestWord = '';
+
+  for (const word of words) {
+    if (word.length === 1 || set.has(word.slice(0,-1))) {
+      set.add(word);
+      if (word.length > longestWord.length) {
+        longestWord = word
+      }
+    }
+  }
+  return longestWord;
+};
 
 // Example 1:
 // Input: words = ["w","wo","wor","worl","world"]
