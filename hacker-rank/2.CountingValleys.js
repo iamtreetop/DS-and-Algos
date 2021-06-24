@@ -8,7 +8,24 @@
 // Given the sequence of up and down steps during a hike, find and print the number of valleys walked through.
 
 function countingValleys(steps, path) {
-  // Write your code here
+  // track valleys count & current elevation
+  let valleys = 0,
+    elevation = 0;
+  // iterate over path
+  for (const direction of path) {
+    // if the path is Down
+    if (direction === "D") {
+      elevation--;
+    } else {
+      // "Up"
+      // if we return to sea level
+      if (elevation === -1) {
+        valleys++;
+      }
+      elevation++;
+    }
+  }
+  return valleys;
 }
 
 // Example
