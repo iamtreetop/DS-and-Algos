@@ -7,7 +7,14 @@
 
 // For example, inverting [0,1,1] results in [1,0,0].
  
-var flipAndInvertImage = function (image) {};
+var flipAndInvertImage = function (image) {
+  let res = [];
+  for (const arr of image) {
+    res.push(arr.reverse().map((num) => (num === 1 ? 0 : 1)));
+  }
+
+  return res;
+};
 
 // Example 1:
 
