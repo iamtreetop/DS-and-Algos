@@ -4,6 +4,33 @@
 // Remove all the leaf nodes.
 // Repeat until the tree is empty.
  
+var findLeaves = function (root) {
+  const leaves = [];
+
+  while (root) {
+    if (!root) break;
+    const currLeafs = [];
+    root = dfs(root, currLeafs);
+    ("");
+    leaves.push(currLeafs);
+  }
+
+  return leaves;
+};
+
+const dfs = (root, currLeafs) => {
+  if (!root) return null;
+  if (!root.left && !root.right) {
+    currLeafs.push(root.val);
+    return null;
+  }
+
+  root.left = dfs(root.left, currLeafs);
+  root.right = dfs(root.right, currLeafs);
+
+  return root;
+};
+
 
 // Example 1:
 //     1             1         1
