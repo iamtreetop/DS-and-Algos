@@ -4,7 +4,21 @@
 // without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence 
 // of the array [0,3,1,6,2,2,7].
 
- 
+// dp
+// Time: O(n^2) | space: O(n)
+var lengthOfLIS = function (nums) {
+  const dp = Array(nums.length).fill(1);
+
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[j] < nums[i]) {
+        dp[i] = Math.max(dp[i], dp[j] + 1);
+      }
+    }
+  }
+
+  return Math.max(...dp);
+};
 
 // Example 1:
 // Input: nums = [10,9,2,5,3,7,101,18]
