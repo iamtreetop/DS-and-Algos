@@ -3,7 +3,16 @@
 // Find the node in the BST that the node's value equals val and return the subtree rooted with that node. 
 // If such a node does not exist, return null.
 
- 
+var searchBST = function(root, val) {
+  while (root && root.val !== val) {
+    if (val < root.val) {
+      root = root.left;
+    } else {
+      root = root.right;
+    }
+  }
+  return root;
+};
 
 // Example 1:
 //         4
