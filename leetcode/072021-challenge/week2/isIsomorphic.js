@@ -9,17 +9,17 @@ var isIsomorphic = function (s, t) {
   if (s === t) return true;
   if (s.length !== t.length) return false;
 
-  const hashS = {};
-  const hashT = {};
+  const sHash = {};
+  const tHash = {};
 
   for (let i = 0; i < s.length; i++) {
     const sChar = s[i];
     const tChar = t[i];
 
-    if (!hashS[sChar]) hashS[sChar] = tChar;
-    if (!hashT[tChar]) hashT[tChar] = sChar;
+    if (!sHash[sChar]) sHash[sChar] = tChar;
+    if (!tHash[tChar]) tHash[tChar] = sChar;
 
-    if (hashS[sChar] !== tChar || hashT[tChar] !== sChar) return false;
+    if (sHash[sChar] !== tChar || tHash[tChar] !== sChar) return false;
   }
 
   return true;
