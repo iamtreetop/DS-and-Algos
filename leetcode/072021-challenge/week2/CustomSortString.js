@@ -6,7 +6,26 @@
 
 // Return any permutation of str (as a string) that satisfies this property.
 
-var customSortString = function (order, str) {};
+var customSortString = function (order, str) {
+  let hash = {},
+    res = "";
+
+  for (let i = 0; i < str.length; i++) {
+    hash[str[i]] = (hash[str[i]] || 0) + 1;
+  }
+
+  for (let i = 0; i < order.length; i++) {
+    res += order[i].repeat(hash[order[i]]);
+    delete hash[order[i]];
+  }
+
+  let keys = Object.keys(hash);
+  for (let i = 0; i < keys.length; i++) {
+    res += keys[i].repeat(hash[keys[i]]);
+  }
+
+  return res;
+};
 
 // Example:
 // Input: 
