@@ -12,7 +12,9 @@
 // Note that the entire part is used when considering what binary value it represents. For example, [1,1,0] represents 6 
 // in decimal, not 3. Also, leading zeros are allowed, so [0,1,1] and [1,1] represent the same value.
 
-var threeEqualParts = function (arr) {};
+var threeEqualParts = function (arr) {
+  
+};
 
 // Example 1:
 // Input: arr = [1,0,1,0,1]
